@@ -5,8 +5,8 @@ import Message from "./Message";
 function Box() {
     return (
         <div>
-            <Button />
-            <Button />
+            <Button text="Click me!"/>
+            <Button text="NO! Click ME!"/>
             <Message />
         </div>
     );

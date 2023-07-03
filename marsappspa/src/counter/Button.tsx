@@ -2,7 +2,7 @@ import React, {useContext, useEffect, useState} from 'react';
 import {CounterContext} from "../App";
 import {CounterProps} from "../types";
 
-function Button() {
+function Button({text} : {text: string}) {
     const { counter, updateCounter } = useContext(CounterContext) as CounterProps;
 
     return (
@@ -13,7 +13,7 @@ function Button() {
                 updateCounter(counter);
             }}
         >
-            Click me!
+            {text}
         </button>
     );
 }

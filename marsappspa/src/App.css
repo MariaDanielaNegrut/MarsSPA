@@ -1,6 +1,9 @@
+body {
+  background: black url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5u8vVMScnWNlILMjiiEdUZNbDO9EDpyZs3w&usqp=CAU") ;
+}
+
 .App {
   text-align: center;
-  background: black url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5u8vVMScnWNlILMjiiEdUZNbDO9EDpyZs3w&usqp=CAU") ;
 }
 
 .App-logo {
@@ -36,4 +39,11 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+.select {
+  min-width: 300px;
+  max-width: 700px;
+  align-self: center;
 }

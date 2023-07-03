@@ -1,8 +1,45 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Box from "../counter/Box";
 import SimplePage from "./SimplePage";
+import {Camera, Rover} from "../types";
+import axios from "axios";
+import Select, {SingleValue} from 'react-select'
 
 function HomePage() {
+    const [rovers, setRovers] = useState<Rover[]>([]);
+    const [selectedRover, setSelectedRover] = useState<Rover | null>(null);
+    const [selectedCamera, setSelectedCamera] = useState<Camera | null>(null);
+
+    useEffect(()  => {
+        axios.get(
+            "http://localhost:8000/rovers",
+            {
+                headers: {
+                    Accept: 'application/json',
+                }
+            }
+        ).then((response) => {
+            const transformedData: Rover[] = response.data.map((item: any) => {
+                return {
+                    id: item.id,
+                    name: item.name,
+                    cameras: item.cameras
+                };
+            });
+            setRovers(transformedData);
+        });
+    }, []);
+
+    const handleRoverChange = (option: SingleValue<Rover>) => {
+        setSelectedRover(option);
+        console.log(option);
+    }
+
+    const handleCameraChange = (option: SingleValue<Camera>) => {
+        setSelectedCamera(option);
+        console.log(option);
+    }
+
     return (
         <>
             <SimplePage title="NASA" imgSrc="https://www.nasa.gov/sites/default/files/thumbnails/image/viper_on_moon_copy.jpg">
@@ -16,6 +53,31 @@ function HomePage() {
             <a style={{color: "white", background: "lightblue", padding: "10px"}} href="/iod"> Click here for image of the day!</a>
             <br/>
             <br/>
+
+            <div style={{display: "flex", flexDirection: "column", width: "100%", justifyContent: "center", alignContent: "center"}}>
+                <Select<Rover>
+                    className="select"
+                    value={selectedRover}
+                    onChange={handleRoverChange}
+                    getOptionLabel={(rover: Rover) => rover.name}
+                    getOptionValue={(rover: Rover) => rover.id.toString()}
+                    options={rovers}
+                    isClearable={true}
+                />
+                {
+                    selectedRover &&
+                    <Select<Camera>
+                        className="select"
+                        value={selectedCamera}
+                        onChange={handleCameraChange}
+                        getOptionLabel={(camera: Camera) => camera.name}
+                        getOptionValue={(camera: Camera) => camera.id.toString()}
+                        options={selectedRover.cameras}
+                        isClearable={true}
+                    />
+                }
+            </div>
+
             <Box/>
         </>
     );
