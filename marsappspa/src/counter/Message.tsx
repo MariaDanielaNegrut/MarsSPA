@@ -1,8 +1,8 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext} from 'react';
 import {CounterContext} from "../App";
 import {CounterProps} from "../types";
 
-function Message(props: {text: string}) {
+function Message() {
     const { counter, updateCounter } = useContext(CounterContext) as CounterProps;
 
     return (
