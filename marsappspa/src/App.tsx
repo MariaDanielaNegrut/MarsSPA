@@ -4,6 +4,7 @@ import './App.css';
 import LandingNASA from "./landing/LandingNASA";
 import SimplePage from "./pages/SimplePage";
 import Button from "./counter/Button";
+import Box from "./counter/Box";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
                   It all starts with U.S companies delivering scientific instruments and technology demonstrations to the lunar surface, followed by a spaceship, called the Gateway, in orbit around the Moon that will support human and scientific missions, and human landers that will take astronauts to the surface of the Moon. The agency’s powerful Space Launch System rocket and Orion spacecraft will be the backbone to build the Gateway and transport astronauts to and from Earth.
           </p>
         </SimplePage>
-        <Button/>
+        <Box/>
     </div>
   );
 }

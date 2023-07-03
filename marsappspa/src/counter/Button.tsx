@@ -1,13 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-function Button() {
-    const [value, setValue] = useState<number>(0);
-
-    useEffect(() => {
-        const counter: number = localStorage.getItem("counter") ? Number(localStorage.getItem("counter")) : 0;
-        setValue(counter);
-    }, []);
-
+function Button({value, setValue}: {value: number, setValue: (counter: number) => void}) {
     return (
         <button
             style={{backgroundColor: "white", padding: "20px", color: "black"}}
