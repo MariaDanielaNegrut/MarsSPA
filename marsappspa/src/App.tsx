@@ -4,6 +4,8 @@ import {CounterProps} from "./types";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import SecondPage from "./pages/SecondPage";
+import Header from "./header/Header";
+import RoverPage from "./pages/RoverPage";
 
 export const CounterContext = createContext<CounterProps | null>(null);
 
@@ -24,9 +26,11 @@ function App() {
       <CounterContext.Provider value={{counter, updateCounter}}>
           <BrowserRouter>
             <div className="App">
+                <Header/>
                 <Routes>
                     <Route path="/" element={<HomePage/>}/>
                     <Route path="/iod" element={<SecondPage/>}/>
+                    <Route path="/rover" element={<RoverPage/>}/>
                 </Routes>
             </div>
           </BrowserRouter>

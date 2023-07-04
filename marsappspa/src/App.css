@@ -47,3 +47,8 @@ body {
   max-width: 700px;
   align-self: center;
 }
+
+.header-link {
+  text-decoration: none;
+  color: white;
+}
